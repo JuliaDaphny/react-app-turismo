@@ -1,31 +1,31 @@
-class CursoService {
+class LocaisService {
     getAll(){
-        const cursos = localStorage.getItem('cursos')
-        return cursos ? JSON.parse(cursos) : []
+        const locais = localStorage.getItem('locais')
+        return locais ? JSON.parse(locais) : []
     }
 
     get(id){
-        const cursos = this.getAll()
-        return cursos[id]
+        const locais = this.getAll()
+        return locais[id]
     }
 
     create(dados){
-        const cursos = this.getAll()
-        cursos.push(dados)
-        localStorage.setItem('cursos', JSON.stringify(cursos))
+        const locais = this.getAll()
+        locais.push(dados)
+        localStorage.setItem('locais', JSON.stringify(locais))
     }
 
     update(id, dados){
-        const cursos = this.getAll()
-        cursos.splice(id, 1, dados)
-        localStorage.setItem('cursos', JSON.stringify(cursos))
+        const locais = this.getAll()
+        locais.splice(id, 1, dados)
+        localStorage.setItem('locais', JSON.stringify(locais))
     }
 
     delete(id){
-        const cursos = this.getAll()
-        cursos.splice(id, 1)
-        localStorage.setItem('cursos', JSON.stringify(cursos))
+        const locais = this.getAll()
+        locais.splice(id, 1)
+        localStorage.setItem('locais', JSON.stringify(locais))
     }
 }
 
-export default new CursoService()
+export default new LocaisService()

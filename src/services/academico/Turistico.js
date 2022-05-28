@@ -1,31 +1,31 @@
-class DisciplinaService {
+class TuristicoService {
     getAll(){
-        const disciplinas = localStorage.getItem('disciplinas')
-        return disciplinas ? JSON.parse(disciplinas) : []
+        const turistico = localStorage.getItem('turistico')
+        return turistico ? JSON.parse(turistico) : []
     }
 
     get(id){
-        const disciplinas = this.getAll()
-        return disciplinas[id]
+        const turistico = this.getAll()
+        return turistico[id]
     }
 
     create(dados){
-        const disciplinas = this.getAll()
-        disciplinas.push(dados)
-        localStorage.setItem('disciplinas', JSON.stringify(disciplinas))
+        const turistico = this.getAll()
+        turistico.push(dados)
+        localStorage.setItem('turistico', JSON.stringify(turistico))
     }
 
     update(id, dados){
-        const disciplinas = this.getAll()
-        disciplinas.splice(id, 1, dados)
-        localStorage.setItem('disciplinas', JSON.stringify(disciplinas))
+        const turistico = this.getAll()
+        turistico.splice(id, 1, dados)
+        localStorage.setItem('turistico', JSON.stringify(turistico))
     }
 
     delete(id){
-        const disciplinas = this.getAll()
-        disciplinas.splice(id, 1)
-        localStorage.setItem('disciplinas', JSON.stringify(disciplinas))
+        const turistico = this.getAll()
+        turistico.splice(id, 1)
+        localStorage.setItem('turistico', JSON.stringify(turistico))
     }
 }
 
-export default new DisciplinaService()
+export default new TuristicoService()

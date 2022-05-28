@@ -1,31 +1,31 @@
-class CursoService {
+class RotaService {
     getAll(){
-        const cursos = localStorage.getItem('cursos')
-        return cursos ? JSON.parse(cursos) : []
+        const rota = localStorage.getItem('rota')
+        return rota ? JSON.parse(rota) : []
     }
 
     get(id){
-        const cursos = this.getAll()
-        return cursos[id]
+        const rota = this.getAll()
+        return rota[id]
     }
 
     create(dados){
-        const cursos = this.getAll()
-        cursos.push(dados)
-        localStorage.setItem('cursos', JSON.stringify(cursos))
+        const rota = this.getAll()
+        rota.push(dados)
+        localStorage.setItem('rota', JSON.stringify(rota))
     }
 
     update(id, dados){
-        const cursos = this.getAll()
-        cursos.splice(id, 1, dados)
-        localStorage.setItem('cursos', JSON.stringify(cursos))
+        const rota = this.getAll()
+        rota.splice(id, 1, dados)
+        localStorage.setItem('rota', JSON.stringify(rota))
     }
 
     delete(id){
-        const cursos = this.getAll()
-        cursos.splice(id, 1)
-        localStorage.setItem('cursos', JSON.stringify(cursos))
+        const rota = this.getAll()
+        rota.splice(id, 1)
+        localStorage.setItem('rota', JSON.stringify(rota))
     }
 }
 
-export default new CursoService()
+export default new RotaService()

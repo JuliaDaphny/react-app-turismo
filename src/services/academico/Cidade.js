@@ -1,5 +1,4 @@
 class CidadeService {
-
     getAll(){
         const cidade = localStorage.getItem('cidade')
         return (cidade) ? (JSON.parse(cidade)) : ([])
