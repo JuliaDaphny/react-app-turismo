@@ -5,12 +5,11 @@ import EventoService from '../../services/academico/Evento';
 import CardEvento from '../../components/cards/CardEvento';
 
 const EventoLista = () => {
-
-  const [cidade, setCidade] = useState([])
+  const [evento, setEvento] = useState([])
 
   useEffect(() => {
 
-    setCidade(EventoService.getAll())
+    setEvento(EventoService.getAll())
 
   }, [])
 
@@ -19,7 +18,7 @@ const EventoLista = () => {
       <h1>Lista de eventos das cidades!</h1>
 
       <Link className='btn btn-info mb-3' to={'/evento/create'}><FaPlus /> Novo</Link>
-      {cidade.map((item, i) => (
+      {evento.map((item, i) => (
         <CardEvento
           id={i}
           nome={item.nome}
