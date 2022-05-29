@@ -6,7 +6,6 @@ import { BsArrowLeft } from 'react-icons/bs'
 import CidadeService from '../../services/academico/Cidade';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import * as Yup from 'yup' 
-import { getSpaceUntilMaxLength } from '@testing-library/user-event/dist/utils';
 
 const Cidade = () => {
   

@@ -1,17 +1,17 @@
 import React from 'react'
 import { Card, ListGroup, ListGroupItem } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
-import CidadeService from '../../services/academico/Cidade';
+import EventoService from '../../services/academico/Evento';
 import { BsPencilFill, BsTrash } from 'react-icons/bs'
 
-const CardCidade = (item) => {
+const CardEvento = (item) => {
 
     function apagar(id) {
-        if(window.confirm('Deseja realmente excluir?')){
-          CidadeService.delete(id)
+        if (window.confirm('Deseja realmente excluir?')) {
+            EventoService.delete(id)
         }
-      }
-    
+    }
+
     return (
         <div>
             <Card>
@@ -23,14 +23,14 @@ const CardCidade = (item) => {
                     </Card.Text>
                 </Card.Body>
                 <ListGroup className="list-group-flush">
-                    <ListGroupItem>{item.lingua}</ListGroupItem>
-                    <ListGroupItem>{item.curiosidade}</ListGroupItem>
+                    <ListGroupItem>{item.cidade}</ListGroupItem>
+                    <ListGroupItem>{item.data}</ListGroupItem>
                     <ListGroupItem>{item.localizacao}</ListGroupItem>
-                    <ListGroupItem>{item.clima}</ListGroupItem>
-                    <ListGroupItem>{item.territorio}</ListGroupItem>
+                    <ListGroupItem>{item.localizacao}</ListGroupItem>
+                    <ListGroupItem>{item.preco}</ListGroupItem>
                 </ListGroup>
                 <Card.Body>
-                    <Link to={'/cidade/' + item.id}><BsPencilFill /></Link>{' '}
+                    <Link to={'/evento/' + item.id}><BsPencilFill /></Link>{' '}
                     <BsTrash onClick={() => apagar(item.id)} className='text-danger' />
                 </Card.Body>
             </Card>
@@ -38,4 +38,4 @@ const CardCidade = (item) => {
     )
 }
 
-export default CardCidade
+export default CardEvento
