@@ -3,15 +3,17 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Container } from "react-bootstrap";
 import CidadeLista from "./pages/cidade/CidadeLista";
-import Cidade from "./pages/cidade/Cidade";
-import EventoLista from "./pages/evento/EventoLista";
-import Evento from "./pages/evento/Evento";
-import Locais from "./pages/locais/Locais";
-import LocaisLista from "./pages/locais/LocaisLista";
-import Rota from "./pages/rota/Rota";
-import RotaLista from "./pages/rota/RotaLista";
+import EntretenimentoLista from "./pages/entretenimento/EntretenimentoLista";
+import Entretenimento from "./pages/entretenimento/Entretenimento";
+import Comercio from "./pages/comercio/Comercio";
+import ComercioLista from "./pages/comercio/ComercioLista";
 import Turistico from "./pages/turistico/Turistico";
 import TuristicoLista from "./pages/turistico/TuristicoLista";
+import UsuarioLista from "./pages/usuario/UsuarioLista";
+import Usuario from "./pages/usuario/Usuario";
+import CidadeForm from "./pages/cidade/CidadeForm";
+import CidadeDetalhe from "./pages/cidade/CidadeDetalhe";
+import Home from "./pages/home/Home";
 
 function App() {
 
@@ -21,26 +23,29 @@ function App() {
         <Menu />
         <Container>
           <Routes>
-
+            
             {/* Rotas das páginas cidade */}
-            <Route path="/" element={<Cidade />} />
+            <Route path="/" element={<Home />} />
             <Route path="/cidade" element={<CidadeLista />} />
-            <Route path="/cidade/create" element={<Cidade />} />
+            <Route path="/cidade/:id" element={<CidadeDetalhe />} />
+            <Route path="/cidade/create" element={<CidadeForm />} />
+            <Route path="/cidade/update/id:" element={<CidadeForm />} />
 
             {/* Rotas das páginas evento */}
-            <Route path="/evento/:id" element={<Evento />} />
-            <Route path="/evento" element={<EventoLista />} />
-            <Route path="/evento/create" element={<Evento />} />
+            <Route path="/evento/:id" element={<Entretenimento />} />
+            <Route path="/evento" element={<EntretenimentoLista />} />
+            <Route path="/evento/create" element={<Entretenimento />} />
+            <Route path="/evento/update/:id" element={<Entretenimento />} />
 
-            {/* Rotas das páginas locais */}
-            <Route path="/locais/:id" element={<Locais />} />
-            <Route path="/locais" element={<LocaisLista />} />
-            <Route path="/locais/create" element={<Locais />} />
+            {/* Rotas das páginas comercio */}
+            <Route path="/comercio/:id" element={<Comercio />} />
+            <Route path="/comercio" element={<ComercioLista />} />
+            <Route path="/comercio/create" element={<Comercio />} />
 
-            {/* Rotas das páginas lista */}
-            <Route path="/rota/:id" element={<Rota />} />
-            <Route path="/rota" element={<RotaLista />} />
-            <Route path="/rota/create" element={<Rota />} />
+            {/* Rotas das páginas de usuarios-adm */}
+            <Route path="/usuario/:id" element={<Usuario />} />
+            <Route path="/usuario" element={<UsuarioLista />} />
+            <Route path="/usuario/create" element={<Usuario />} />
 
             {/* Rotas das páginas pontos turisticos */}
             <Route path="/turistico/:id" element={<Turistico />} />

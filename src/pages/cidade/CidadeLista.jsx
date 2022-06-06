@@ -1,37 +1,35 @@
 import React, { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Col, Row } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 import { FaPlus } from 'react-icons/fa'
+import CardCidade from '../../components/cardListas/CardCidade'
 import CidadeService from '../../services/academico/Cidade';
-import CardCidade from '../../components/cards/CardCidade'
 
-const CidadeLista = () => {
-  const [cidade, setCidade] = useState([])
+function CidadeLista() {
+    const [cidade, setCidade] = useState([])
 
-  useEffect(() => {
+    useEffect(() => {
+        setCidade(CidadeService.getAll())
+    }, [])
 
-    setCidade(CidadeService.getAll())
+    return (
+        <div className='fundo'>
+    
+            <Link className='btn btn-info mb-3' to={'/cidade/create'}><FaPlus /> Novo</Link>
 
-  }, [])
-
-  return (
-    <div>
-      <h1>Lista de cidades</h1>
-
-      <Link className='btn btn-info mb-3' to={'/cidade/create'}><FaPlus /> Novo</Link>
-          {cidade.map((item, i) => (
-            <CardCidade 
-             id={i}
-             nome={item.nome} 
-             descricao={item.descricao}
-             curiosidade={item.curiosidade}
-             lingua={item.lingua}
-             localizacao={item.localizacao}
-             clima={item.clima}
-             territorio={item.territorio}
-            />
-          ))}
-    </div>
-  )
+            <Row>
+                {cidade.map((item, i) => (
+                    <Col className='py-3'>
+                        <CardCidade
+                            id={i}
+                            nome={item.nome}
+                            img={item.img}
+                        />
+                    </Col>
+                ))}
+            </Row>
+        </div>
+    )
 }
 
 export default CidadeLista

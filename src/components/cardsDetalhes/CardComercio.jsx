@@ -1,14 +1,14 @@
 import React from 'react'
 import { Card, ListGroup, ListGroupItem } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
-import EventoService from '../../services/academico/Evento';
+import ComercioService from '../../services/academico/Comercio';
 import { BsPencilFill, BsTrash } from 'react-icons/bs'
 
-const CardEvento = (item) => {
+const CardComercio = (item) => {
 
     function apagar(id) {
         if (window.confirm('Deseja realmente excluir?')) {
-            EventoService.delete(id)
+            ComercioService.delete(id)
         }
     }
 
@@ -25,12 +25,11 @@ const CardEvento = (item) => {
                 <ListGroup className="list-group-flush">
                     <ListGroupItem>{item.cidade}</ListGroupItem>
                     <ListGroupItem>{item.data}</ListGroupItem>
+                    <ListGroupItem>{item.funcionamento}</ListGroupItem>
                     <ListGroupItem>{item.localizacao}</ListGroupItem>
-                    <ListGroupItem>{item.localizacao}</ListGroupItem>
-                    <ListGroupItem>{item.preco}</ListGroupItem>
                 </ListGroup>
                 <Card.Body>
-                    <Link to={'/evento/' + item.id}><BsPencilFill /></Link>{' '}
+                    <Link to={'/comercio/' + item.id}><BsPencilFill /></Link>{' '}
                     <BsTrash onClick={() => apagar(item.id)} className='text-danger' />
                 </Card.Body>
             </Card>
@@ -38,4 +37,4 @@ const CardEvento = (item) => {
     )
 }
 
-export default CardEvento
+export default CardComercio

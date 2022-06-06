@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { FaPlus } from 'react-icons/fa'
-import EventoService from '../../services/academico/Evento';
-import CardEvento from '../../components/cards/CardEvento';
+import EventoService from '../../services/academico/Entretenimento';
+import CardEvento from '../../components/cardsDetalhes/CardEntretenimento';
 
-const EventoLista = () => {
+const EntretenimentoLista = () => {
   const [evento, setEvento] = useState([])
 
   useEffect(() => {
@@ -33,4 +33,4 @@ const EventoLista = () => {
   )
 }
 
-export default EventoLista;
+export default EntretenimentoLista;

@@ -1,14 +1,15 @@
-import React, { useEffect} from 'react'
+import React, { useEffect } from 'react'
 import { Button, Form } from 'react-bootstrap'
 import { useForm } from 'react-hook-form';
-import { FaCheck } from 'react-icons/fa'
-import { BsArrowLeft } from 'react-icons/bs'
+import { BsCheckCircleFill } from 'react-icons/bs'
+import { BsArrowLeftCircleFill } from 'react-icons/bs'
 import CidadeService from '../../services/academico/Cidade';
 import { Link, useNavigate, useParams } from 'react-router-dom';
-import * as Yup from 'yup' 
+import * as Yup from 'yup'
 
-const Cidade = () => {
-  
+
+const CidadeForm = () => {
+
   const params = useParams()
   const navigate = useNavigate()
   const { register, handleSubmit, setValue, formState: { errors } } = useForm();
@@ -35,21 +36,22 @@ const Cidade = () => {
   }
 
   const CidadeV = Yup.object().shape({
-    nome:Yup.string().min(5, 'Nome muito pequeno!').max(25, 'Nome muito grande!').required('Campo obrigatório'),
-    descricao:Yup.string().min(100, 'Nome muito pequeno!').max(500, 'Nome muito grande!').required('Campo obrigatório'),
-    localizacao:Yup.string().min(10, 'Nome muito pequeno!').max(100, 'Nome muito grande!').required('Campo obrigatório'),
-    lingua:Yup.string().min(5, 'Nome muito pequeno!').max(20, 'Nome muito grande!').required('Campo obrigatório'),
-    clima:Yup.string().min(5, 'Nome muito pequeno!').max(20, 'Nome muito grande!').required('Campo obrigatório'),
-    curiosidade:Yup.string().min(25, 'Nome muito pequeno!').max(100, 'Nome muito grande!'),
-    territorio:Yup.string().min(5, 'Nome muito pequeno!').max(20, 'Nome muito grande!').required('Campo obrigatório'),
+    nome: Yup.string().min(5, 'Nome muito pequeno!').max(25, 'Nome muito grande!').required('Campo obrigatório'),
+    descricao: Yup.string().min(100, 'Nome muito pequeno!').max(500, 'Nome muito grande!').required('Campo obrigatório'),
+    localizacao: Yup.string().min(10, 'Nome muito pequeno!').max(100, 'Nome muito grande!').required('Campo obrigatório'),
+    lingua: Yup.string().min(5, 'Nome muito pequeno!').max(20, 'Nome muito grande!').required('Campo obrigatório'),
+    clima: Yup.string().min(5, 'Nome muito pequeno!').max(20, 'Nome muito grande!').required('Campo obrigatório'),
+    curiosidade: Yup.string().min(25, 'Nome muito pequeno!').max(100, 'Nome muito grande!'),
+    territorio: Yup.string().min(5, 'Nome muito pequeno!').max(20, 'Nome muito grande!').required('Campo obrigatório'),
   })
 
   return (
     <div>
-      <h1>Cidade</h1>
+      <h1 className='titulo-cidade'>Cadastre uma nova cidade</h1>
 
-      <Form >
+      <div className="linha-2 mb-2"></div>
 
+      <Form className='p-lg-5'>
         <Form.Group className="mb-3" controlId="nome">
           <Form.Label>Nome: </Form.Label>
           <Form.Control isInvalid={errors.nome} type="text" {...register("nome", CidadeV.nome)} />
@@ -93,8 +95,8 @@ const Cidade = () => {
         </Form.Group>
 
         <div className="text-center">
-          <Button onClick={handleSubmit(salvar)} className='btn btn-success'><FaCheck /> Salvar</Button>{' '}
-          <Link className='btn btn-danger' to={-1}><BsArrowLeft /> Voltar</Link>
+          <Link className='btn btn-danger botao' to={-1}><BsArrowLeftCircleFill /></Link>
+          <Button onClick={handleSubmit(salvar)} className='btn btn-success botao'><BsCheckCircleFill /></Button>{' '}
         </div>
       </Form>
 
@@ -102,4 +104,4 @@ const Cidade = () => {
   )
 }
 
-export default Cidade
+export default CidadeForm

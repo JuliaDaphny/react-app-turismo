@@ -1,25 +1,23 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom';
 import { FaPlus } from 'react-icons/fa'
-import LocaisService from '../../services/academico/Locais';
-import CardLocais from '../../components/cards/CardLocais';
+import ComercioService from '../../services/academico/Comercio';
+import CardComercio from '../../components/cardsDetalhes/CardComercio';
 
-const LocaisLista = () => {
-  const [locais, setCidade] = useState([])
+const ComercioLista = () => {
+  const [comercio, setCidade] = useState([])
 
   useEffect(() => {
-
-    setCidade(LocaisService.getAll())
-
+    setCidade(ComercioService.getAll())
   }, [])
 
   return (
     <div>
       <h1>Lista do comércio das cidades</h1>
 
-      <Link className='btn btn-info mb-3' to={'/locais/create'}><FaPlus /> Novo</Link>
-      {locais.map((item, i) => (
-        <CardLocais
+      <Link className='btn btn-info mb-3' to={'/comercio/create'}><FaPlus /> Novo</Link>
+      {comercio.map((item, i) => (
+        <CardComercio
           id={i}
           nome={item.nome}
           descricao={item.descricao}
@@ -32,4 +30,4 @@ const LocaisLista = () => {
   )
 }
 
-export default LocaisLista;
+export default ComercioLista;
