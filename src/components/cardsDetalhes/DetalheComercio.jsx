@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import ComercioService from '../../services/academico/Comercio';
 import { BsPencilFill, BsTrash } from 'react-icons/bs'
 
-const CardComercio = (item) => {
+const DetalheComercio = (item) => {
 
     function apagar(id) {
         if (window.confirm('Deseja realmente excluir?')) {
@@ -29,7 +29,7 @@ const CardComercio = (item) => {
                     <ListGroupItem>{item.localizacao}</ListGroupItem>
                 </ListGroup>
                 <Card.Body>
-                    <Link to={'/comercio/' + item.id}><BsPencilFill /></Link>{' '}
+                    <Link to={'/comercio' + item.id}><BsPencilFill /></Link>{' '}
                     <BsTrash onClick={() => apagar(item.id)} className='text-danger' />
                 </Card.Body>
             </Card>
@@ -37,4 +37,4 @@ const CardComercio = (item) => {
     )
 }
 
-export default CardComercio
+export default DetalheComercio

@@ -1,14 +1,14 @@
-import { Button } from 'bootstrap';
-import { Form } from 'formik';
+import { Form, Button } from 'react-bootstrap';
 import React, { useEffect } from 'react'
-import { FaCheck } from 'react-icons/fa'
-import { BsArrowLeft } from 'react-icons/bs'
+import { BsCheckCircleFill } from 'react-icons/bs'
+import { BsArrowLeftCircleFill } from 'react-icons/bs'
 import { useForm } from 'react-hook-form';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import ComercioService from '../../services/academico/Comercio';
-import * as Yup from 'yup' 
+import ComercioV from '../../components/validators/comercioV';
+import { mask } from 'remask';
 
-const Comercio = () => {
+const ComercioForm = () => {
 
   const params = useParams()
   const navigate = useNavigate()
@@ -35,23 +35,20 @@ const Comercio = () => {
     navigate('/comercio')
   }
 
-  const ComercioV = Yup.object().shape({
-    nome:Yup.string().min(5, 'Nome muito pequeno!').max(25, 'Nome muito grande!').required('Campo obrigatório'),
-    descricao:Yup.string().min(100, 'Nome muito pequeno!').max(500, 'Nome muito grande!').required('Campo obrigatório'),
-    localizacao:Yup.string().min(10, 'Nome muito pequeno!').max(100, 'Nome muito grande!').required('Campo obrigatório'),
-    cidade:Yup.string().min(5, 'Nome muito pequeno!').max(20, 'Nome muito grande!').required('Campo obrigatório'),
-    funcionamento:Yup.date().min(5, 'Nome muito pequeno!').max(10, 'Nome muito grande!').required('Campo obrigatório'),
-  })
+  function handleChange(event) {
+    const mascara = event.target.getAttribute('mask')
+    setValue(event.target.name, mask(event.target.value, mascara))
+  }
 
   return (
     <div>
-      <h1>Comercio</h1>
+      <h1 className='titulo-cidade'>Cadastre um novo comercio</h1>
+      <div className="linha-2 mb-2"></div>
 
-      <Form >
-
+      <Form className='p-lg-5'>
         <Form.Group className="mb-3" controlId="nome">
           <Form.Label>Nome: </Form.Label>
-          <Form.Control isInvalid={errors.nome} type="text" {...register("nome", ComercioV.nome)} />
+          <Form.Control isInvalid={errors.nome} type="text" {...register("nome", ComercioV.nome)} className="shadow" />
           {errors.nome && <span>{errors.nome.message}</span>}
         </Form.Group>
 
@@ -69,7 +66,7 @@ const Comercio = () => {
 
         <Form.Group className="mb-3" controlId="funcionamento">
           <Form.Label>Horário de funcinamento: </Form.Label>
-          <Form.Control isInvalid={errors.funcionamento} type="text" {...register("funcionamento", ComercioV.funcionamento)} />
+          <Form.Control isInvalid={errors.funcionamento} type="text" {...register("funcionamento", ComercioV.funcionamento)} mask="99/99/9999" onChange={handleChange}/>
           {errors.funcionamento && <span>{errors.funcionamento.message}</span>}
         </Form.Group>
 
@@ -80,12 +77,12 @@ const Comercio = () => {
         </Form.Group>
 
         <div className="text-center">
-          <Button onClick={handleSubmit(salvar)} className='btn btn-success'><FaCheck /> Salvar</Button>{' '}
-          <Link className='btn btn-danger' to={-1}><BsArrowLeft /> Voltar</Link>
+          <Link className='btn btn-danger botao' to={-1}><BsArrowLeftCircleFill /></Link>
+          <Button onClick={handleSubmit(salvar)} className='btn btn-success botao'><BsCheckCircleFill /></Button>{' '}
         </div>
       </Form>
     </div>
   )
 }
 
-export default Comercio;
+export default ComercioForm

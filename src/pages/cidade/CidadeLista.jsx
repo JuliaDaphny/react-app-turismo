@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react'
-import { Col, Row } from 'react-bootstrap';
+import { Col, Container, Row } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { FaPlus } from 'react-icons/fa'
 import CardCidade from '../../components/cardListas/CardCidade'
 import CidadeService from '../../services/academico/Cidade';
 
 function CidadeLista() {
-    const [cidade, setCidade] = useState([])
+    const [cidadeList, setCidade] = useState([])
 
     useEffect(() => {
         setCidade(CidadeService.getAll())
@@ -14,20 +14,24 @@ function CidadeLista() {
 
     return (
         <div className='fundo'>
-    
-            <Link className='btn btn-info mb-3' to={'/cidade/create'}><FaPlus /> Novo</Link>
-
-            <Row>
-                {cidade.map((item, i) => (
-                    <Col className='py-3'>
-                        <CardCidade
-                            id={i}
-                            nome={item.nome}
-                            img={item.img}
-                        />
+            <Container>
+                <Row>
+                    <Col className='py-4'>
+                        <Link className='btn btn-warning ' to={'/cidade/create'}><FaPlus /> Novo</Link>
                     </Col>
-                ))}
-            </Row>
+                </Row>
+                <Row>
+                    {cidadeList.map((cidade, i) => (
+                        <Col md={4} className="py-3">
+                            <CardCidade
+                                id={i}
+                                nome={cidade.nome}
+                                img={cidade.img}
+                            />
+                        </Col>
+                    ))}
+                </Row>
+            </Container>
         </div>
     )
 }

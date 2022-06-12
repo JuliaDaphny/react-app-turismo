@@ -1,36 +1,35 @@
 import React, { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Col, Row } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 import { FaPlus } from 'react-icons/fa'
-import EventoService from '../../services/academico/Entretenimento';
-import CardEvento from '../../components/cardsDetalhes/CardEntretenimento';
+import EntretenimentoService from '../../services/academico/Entretenimento';
+import CardEntretenimento from '../../components/cardListas/CardEntretenimento';
 
-const EntretenimentoLista = () => {
-  const [evento, setEvento] = useState([])
+function EntretenimentoLista() {
+  const [entretenimento, setEntretenimento] = useState([])
 
   useEffect(() => {
-
-    setEvento(EventoService.getAll())
-
+    setEntretenimento(EntretenimentoService.getAll())
   }, [])
 
   return (
-    <div>
-      <h1>Lista de eventos das cidades!</h1>
+    <div className='fundo'>
 
-      <Link className='btn btn-info mb-3' to={'/evento/create'}><FaPlus /> Novo</Link>
-      {evento.map((item, i) => (
-        <CardEvento
-          id={i}
-          nome={item.nome}
-          descricao={item.descricao}
-          cidade={item.cidade}
-          data={item.data}
-          localizacao={item.localizacao}
-          preco={item.preco}
-        />
-      ))}
+      <Link className='btn mb-5 btn-warning' to={'/entretenimento/create'}><FaPlus /> Novo</Link>
+
+      <Row>
+        {entretenimento.map((item, i) => (
+          <Col className='py-3' key={i}>
+            <CardEntretenimento
+              id={i}
+              nome={item.nome}
+              img={item.img}
+            />
+          </Col>
+        ))}
+      </Row>
     </div>
   )
 }
 
-export default EntretenimentoLista;
+export default EntretenimentoLista

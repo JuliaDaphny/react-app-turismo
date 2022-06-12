@@ -7,31 +7,36 @@ import { Link } from 'react-router-dom'
 import "../css/Projeto.css"
 import swal from 'sweetalert';
 
-const CardCidade = (item) => {
+const CardCidade = (cidade) => {
 
     function apagar(id) {
-        if (swal({
+        swal({
             title: "Tem certeza?",
             text: "Uma vez excluído, você não será capaz de recuperar este arquivo!",
             icon: "warning",
             buttons: true,
             dangerMode: true,
+        }).then((podeApagar) => {
+            if (podeApagar) {
+                CidadeService.delete(id)
+                swal("Bom trabalho!", "Você excluiu a cidade!", "success")
+                    .then(function () { window.location.reload() });
+            } else {
+                swal("Tudo bem!", "Você decidiu não excluir a cidade!", "info");
+            }
         })
-        ) { CidadeService.delete(id) }
     }
 
     return (
-        <div>
-            <Card>
-                <Card.Img variant="top" src="holder.js/100px180" />
-                <Card.Body>
-                    <Card.Title>{item.nome}</Card.Title>
-                    <Link to={'/cidade/:id'} className='btn btn-success botao'><BsFillEyeFill /></Link>
-                    <Link to={'/cidade/update/id:'} className='btn btn-primary botao'><BsFillBrushFill /></Link>
-                    <Button className='btn btn-danger' onClick={() => apagar(item.id)}><BsTrashFill /></Button>
-                </Card.Body>
-            </Card>
-        </div>
+        <Card>
+            <Card.Img variant="top" src="holder.js/100px180" />
+            <Card.Body className='cor-card'>
+                <Card.Title>{cidade.nome}</Card.Title>
+                <Link to={'/cidade/' + cidade.id} className='btn btn-light botao'><BsFillEyeFill /></Link>
+                <Link to={'/cidade/update/' + cidade.id} className='btn btn-light botao'><BsFillBrushFill /></Link>
+                <Button className='btn btn-light' onClick={() => apagar(cidade.id)}><BsTrashFill /></Button>
+            </Card.Body>
+        </Card>
     )
 }
 

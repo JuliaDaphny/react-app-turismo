@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import EventoService from '../../services/academico/Entretenimento';
 import { BsPencilFill, BsTrash } from 'react-icons/bs'
 
-const CardEntretenimento = (item) => {
+const DetalheEntretenimento = (item) => {
 
     function apagar(id) {
         if (window.confirm('Deseja realmente excluir?')) {
@@ -26,11 +26,11 @@ const CardEntretenimento = (item) => {
                     <ListGroupItem>{item.cidade}</ListGroupItem>
                     <ListGroupItem>{item.data}</ListGroupItem>
                     <ListGroupItem>{item.localizacao}</ListGroupItem>
-                    <ListGroupItem>{item.localizacao}</ListGroupItem>
+                    <ListGroupItem>{item.descricao}</ListGroupItem>
                     <ListGroupItem>{item.preco}</ListGroupItem>
                 </ListGroup>
                 <Card.Body>
-                    <Link to={'/evento/' + item.id}><BsPencilFill /></Link>{' '}
+                    <Link to={'/entretenimento' + item.id}><BsPencilFill /></Link>{' '}
                     <BsTrash onClick={() => apagar(item.id)} className='text-danger' />
                 </Card.Body>
             </Card>
@@ -38,4 +38,4 @@ const CardEntretenimento = (item) => {
     )
 }
 
-export default CardEntretenimento
+export default DetalheEntretenimento

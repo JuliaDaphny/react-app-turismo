@@ -1,4 +1,4 @@
-class EventoService {
+class EntretenimentoService {
     getAll(){
         const Entretenimento = localStorage.getItem('Entretenimento')
         return Entretenimento ? JSON.parse(Entretenimento) : []
@@ -28,4 +28,4 @@ class EventoService {
     }
 }
 
-export default new EventoService()
+export default new EntretenimentoService()

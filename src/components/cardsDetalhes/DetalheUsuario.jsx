@@ -1,13 +1,12 @@
-import { Button } from 'react-bootstrap'
 import React from 'react'
-import { Card } from 'react-bootstrap'
+import { Card, Button } from 'react-bootstrap'
 import { BsTrashFill, BsFillBrushFill, BsFillEyeFill } from 'react-icons/bs'
-import EntretenimentoService from '../../services/academico/Entretenimento';
+import UsuarioService from '../../services/academico/Usuario';
 import { Link } from 'react-router-dom'
 import "../css/Projeto.css"
 import swal from 'sweetalert';
 
-function CardEntretenimento(item) {
+function DetalheUsuario(item) {
 
     function apagar(id) {
         if (swal({
@@ -17,22 +16,22 @@ function CardEntretenimento(item) {
             buttons: true,
             dangerMode: true,
         })
-        ) {EntretenimentoService.delete(id) }
+        ) {UsuarioService.delete(id) }
     }
 
     return (
         <div>
             <Card>
                 <Card.Img variant="top" src="holder.js/100px180" />
-                <Card.Body className='cor-card'>
+                <Card.Body>
                     <Card.Title>{item.nome}</Card.Title>
-                    <Link to={'/entretenimento/:id'} className='btn btn-light botao'><BsFillEyeFill /></Link>
-                    <Link to={'/entretenimento/update/id:'} className='btn btn-light botao'><BsFillBrushFill /></Link>
-                    <Button className='btn btn-light' onClick={() => apagar(item.id)}><BsTrashFill /></Button>
+                    <Link to={'/usuario/:id'} className='btn btn-success botao'><BsFillEyeFill /></Link>
+                    <Link to={'/usuario/update/id:'} className='btn btn-primary botao'><BsFillBrushFill /></Link>
+                    <Button className='btn btn-danger' onClick={() => apagar(item.id)}><BsTrashFill /></Button>
                 </Card.Body>
             </Card>
         </div>
     )
 }
 
-export default CardEntretenimento
+export default DetalheUsuario

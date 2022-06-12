@@ -1,14 +1,13 @@
-import { Button } from 'bootstrap';
 import React, { useEffect } from 'react'
-import { Form } from 'react-bootstrap';
+import { Form, Button } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
 import EntretenimentoService from '../../services/academico/Entretenimento';
-import * as Yup from 'yup' 
-import { FaCheck } from 'react-icons/fa'
-import { BsArrowLeft } from 'react-icons/bs'
+import * as Yup from 'yup'
+import { BsCheckCircleFill } from 'react-icons/bs'
+import { BsArrowLeftCircleFill } from 'react-icons/bs'
 import { Link, useNavigate, useParams } from 'react-router-dom';
 
-const Entretenimento = () => {
+const EntretenimentoForm = () => {
 
   const params = useParams()
   const navigate = useNavigate()
@@ -16,10 +15,11 @@ const Entretenimento = () => {
 
   useEffect(() => {
     if (params.id) {
-      const evento = EntretenimentoService.get(params.id)
+      const entretenimento = EntretenimentoService.get(params.id)
 
-      for (let campo in evento) {
-        setValue(campo, evento[campo])
+      for (let campo in entretenimento) {
+        console.log(entretenimento, campo)
+        setValue(campo, entretenimento[campo])
       }
     }
   }, [params.id, setValue])
@@ -32,25 +32,25 @@ const Entretenimento = () => {
       EntretenimentoService.create(dados)
     }
 
-    navigate('/evento')
+    navigate('/entretenimento')
   }
 
   const EntretenimentoV = Yup.object().shape({
-    nome:Yup.string().min(5, 'Nome muito pequeno!').max(25, 'Nome muito grande!').required('Campo obrigatório'),
-    descricao:Yup.string().min(50, 'Nome muito pequeno!').max(100, 'Nome muito grande!').required('Campo obrigatório'),
-    localizacao:Yup.string().min(10, 'Nome muito pequeno!').max(50, 'Nome muito grande!').required('Campo obrigatório'),
-    data:Yup.string().min(5, 'Nome muito pequeno!').max(10, 'Nome muito grande!').required('Campo obrigatório'),
-    preco:Yup.string().min(5, 'Nome muito pequeno!').max(10, 'Nome muito grande!').required('Campo obrigatório'),
-    cidade:Yup.string().min(10, 'Nome muito pequeno!').max(50, 'Nome muito grande!'),
+    nome: Yup.string().min(5, 'Nome muito pequeno!').max(25, 'Nome muito grande!').required('Campo obrigatório'),
+    descricao: Yup.string().min(50, 'Nome muito pequeno!').max(100, 'Nome muito grande!').required('Campo obrigatório'),
+    localizacao: Yup.string().min(10, 'Nome muito pequeno!').max(50, 'Nome muito grande!').required('Campo obrigatório'),
+    data: Yup.string().min(5, 'Nome muito pequeno!').max(10, 'Nome muito grande!').required('Campo obrigatório'),
+    preco: Yup.string().min(5, 'Nome muito pequeno!').max(10, 'Nome muito grande!').required('Campo obrigatório'),
+    cidade: Yup.string().min(10, 'Nome muito pequeno!').max(50, 'Nome muito grande!'),
   })
 
   return (
 
     <div>
-      <h1>Entretenimentos</h1>
+      <h1 className='titulo-cidade'>Cadastre uma novo entretenimento</h1>
+      <div className="linha-2 mb-2"></div>
 
-      <Form >
-
+      <Form className='p-lg-5'>
         <Form.Group className="mb-3" controlId="nome">
           <Form.Label>Nome: </Form.Label>
           <Form.Control isInvalid={errors.nome} type="text" {...register("nome", EntretenimentoV.nome)} />
@@ -86,10 +86,10 @@ const Entretenimento = () => {
           <Form.Control isInvalid={errors.cidade} type="text" {...register("cidade", EntretenimentoV.cidade)} />
           {errors.cidade && <span>{errors.cidade.message}</span>}
         </Form.Group>
-        
+
         <div className="text-center">
-          <Button onClick={handleSubmit(salvar)} className='btn btn-success'><FaCheck /> Salvar</Button>{' '}
-          <Link className='btn btn-danger' to={-1}><BsArrowLeft /> Voltar</Link>
+          <Link className='btn btn-danger botao' to={-1}><BsArrowLeftCircleFill /></Link>
+          <Button onClick={handleSubmit(salvar)} className='btn btn-success botao'><BsCheckCircleFill /></Button>{' '}
         </div>
       </Form>
 
@@ -97,4 +97,4 @@ const Entretenimento = () => {
   )
 }
 
-export default Entretenimento;
+export default EntretenimentoForm
