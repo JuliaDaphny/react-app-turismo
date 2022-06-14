@@ -4,11 +4,11 @@ import { mask, unMask } from 'remask'
 
 const Input = (props) => {
 
-    const {register, errors, validator, setValue} = props.reference
+    const { register, errors, validator, setValue } = props.reference
 
-    function handleChange(event){
+    function handleChange(event) {
         const mascara = props.mask ? props.mask : ''
-        if(mascara){
+        if (mascara) {
             setValue(event.target.name, mask(unMask(event.target.value), mascara))
         }
     }

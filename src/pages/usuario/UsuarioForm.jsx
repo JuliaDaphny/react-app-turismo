@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { Form, Button } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
-import UsuarioService from '../../services/academico/Usuario';
+import UsuarioService from '../../services/ser/Usuario';
 import * as Yup from 'yup'
 import { BsCheckCircleFill } from 'react-icons/bs'
 import { BsArrowLeftCircleFill } from 'react-icons/bs'

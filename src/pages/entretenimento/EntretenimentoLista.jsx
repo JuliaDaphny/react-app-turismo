@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react'
-import { Col, Row } from 'react-bootstrap';
+import { Col, Container, Row } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { FaPlus } from 'react-icons/fa'
-import EntretenimentoService from '../../services/academico/Entretenimento';
+import EntretenimentoService from '../../services/ser/Entretenimento';
 import CardEntretenimento from '../../components/cardListas/CardEntretenimento';
 
 function EntretenimentoLista() {
-  const [entretenimento, setEntretenimento] = useState([])
+  const [entretenimentoList, setEntretenimento] = useState([])
 
   useEffect(() => {
     setEntretenimento(EntretenimentoService.getAll())
@@ -14,20 +14,24 @@ function EntretenimentoLista() {
 
   return (
     <div className='fundo'>
-
-      <Link className='btn mb-5 btn-warning' to={'/entretenimento/create'}><FaPlus /> Novo</Link>
-
-      <Row>
-        {entretenimento.map((item, i) => (
-          <Col className='py-3' key={i}>
-            <CardEntretenimento
-              id={i}
-              nome={item.nome}
-              img={item.img}
-            />
+      <Container>
+        <Row>
+          <Col className='py-4'>
+            <Link className='btn btn-warning ' to={'/entretenimento/create'}><FaPlus /> Novo</Link>
           </Col>
-        ))}
-      </Row>
+        </Row>
+        <Row>
+          {entretenimentoList.map((entretenimento, i) => (
+            <Col className="py-3" key={i}>
+              <CardEntretenimento
+                id={i}
+                nome={entretenimento.nome}
+                img={entretenimento.img}
+              />
+            </Col>
+          ))}
+        </Row>
+      </Container>
     </div>
   )
 }

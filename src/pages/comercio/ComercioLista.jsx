@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react'
-import { Col, Row } from 'react-bootstrap';
+import { Col, Container, Row } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { FaPlus } from 'react-icons/fa'
-import ComercioService from '../../services/academico/Comercio';
+import ComercioService from '../../services/ser/Comercio';
 import CardComercio from '../../components/cardListas/CardComercio';
 
 function ComercioLista() {
-  const [comercio, setComercio] = useState([])
+  const [comercioList, setComercio] = useState([])
 
   useEffect(() => {
     setComercio(ComercioService.getAll())
@@ -14,20 +14,24 @@ function ComercioLista() {
 
   return (
     <div className='fundo'>
-
-      <Link className='btn mb-5 btn-warning' to={'/comercio/create'}><FaPlus /> Novo</Link>
-
-      <Row>
-        {comercio.map((item, i) => (
-          <Col className='py-3' key={i}>
-            <CardComercio
-              id={i}
-              nome={item.nome}
-              img={item.img}
-            />
+      <Container>
+        <Row>
+          <Col className='py-4'>
+            <Link className='btn btn-warning ' to={'/comercio/create'}><FaPlus /> Novo</Link>
           </Col>
-        ))}
-      </Row>
+        </Row>
+        <Row>
+          {comercioList.map((comercio, i) => (
+            <Col md={4} className="py-3" key={i}>
+              <CardComercio
+                id={i}
+                nome={comercio.nome}
+                img={comercio.img}
+              />
+            </Col>
+          ))}
+        </Row>
+      </Container>
     </div>
   )
 }

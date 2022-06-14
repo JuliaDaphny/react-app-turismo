@@ -1,27 +1,33 @@
 import React, { useEffect, useState } from 'react'
+import EntretenimentoService from '../../services/ser/Entretenimento';
 import DetalheEntretenimento from '../../components/cardsDetalhes/DetalheEntretenimento';
-import EntretenimentoService from '../../services/academico/Entretenimento';
+import { useParams } from 'react-router-dom';
 
 const EntretenimentoDetalhe = () => {
     const [entretenimento, setEntretenimento] = useState([])
+    const params = useParams()
 
     useEffect(() => {
-        setEntretenimento(EntretenimentoService.getAll())
-    }, [])
+        setEntretenimento(EntretenimentoService.getAll()[params.id])
+    }, [params])
+
+
+    if (typeof entretenimento == 'undefined') {
+        return (<div></div>)
+    }
 
     return (
         <div>
-            {entretenimento.map((item, i) => (
-                <DetalheEntretenimento
-                    id={i}
-                    nome={item.nome}
-                    descricao={item.descricao}
-                    cidade={item.cidade}
-                    data={item.data}
-                    localizacao={item.localizacao}
-                    preco={item.preco}
-                />
-            ))}
+            <DetalheEntretenimento
+                id={params.id}
+                nome={entretenimento.nome}
+                cidade={entretenimento.cidade}
+                data={entretenimento.data}
+                localizacao={entretenimento.localizacao}
+                descricao={entretenimento.descricao}
+                preco={entretenimento.preco}
+                informacao={entretenimento.informacao}
+            />
         </div>
     )
 }

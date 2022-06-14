@@ -1,31 +1,33 @@
 import React, { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom';
-import { FaPlus } from 'react-icons/fa'
-import TuristicoService from '../../services/academico/Turistico';
+import TuristicoService from '../../services/ser/Turistico';
 import DetalheTuristico from '../../components/cardsDetalhes/DetalheTuristico';
+import { useParams } from 'react-router-dom';
 
 const TuristicoDetalhe = () => {
   const [turistico, setTuristico] = useState([])
+  const params = useParams()
 
   useEffect(() => {
-    setTuristico(TuristicoService.getAll())
-  }, [])
+    setTuristico(TuristicoService.getAll()[params.id])
+  }, [params])
+
+  if (typeof turistico == 'undefined') {
+    return (<div></div>)
+  }
 
   return (
     <div>
-      <h1>Lista do comércio das cidades</h1>
-
-      <Link className='btn btn-info mb-3' to={'/turistico/create'}><FaPlus /> Novo</Link>
-      {turistico.map((item, i) => (
-        <DetalheTuristico
-          id={i}
-          nome={item.nome}
-          descricao={item.descricao}
-          cidade={item.cidade}
-          localizacao={item.localizacao}
-          funcionamento={item.funcionamento}
-        />
-      ))}
+      <DetalheTuristico
+        id={params.id}
+        nome={turistico.nome}
+        cidade={turistico.cidade}
+        pais={turistico.pais}
+        funcionamento={turistico.funcionamento}
+        localizacao={turistico.localizacao}
+        descricao={turistico.descricao}
+        informacao={turistico.informacao}
+        preco={turistico.preco}
+      />
     </div>
   )
 }

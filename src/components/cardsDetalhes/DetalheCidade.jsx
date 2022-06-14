@@ -12,7 +12,6 @@ const DetalheCidade = (cidade) => {
                 <Row>
                     <Col>
                         <Card>
-                            <Card.Img variant="top" src="holder.js/100px180?text=Image cap" />
                             <Card.Body>
                                 <Card.Title>{cidade.nome}</Card.Title>
                             </Card.Body>
@@ -23,7 +22,7 @@ const DetalheCidade = (cidade) => {
                                 <ListGroupItem>País: {cidade.territorio}</ListGroupItem>
                                 <ListGroupItem>Descrição: {cidade.descricao}</ListGroupItem>
                             </ListGroup>
-                            <Accordion defaultActiveKey="0" flush>
+                            <Accordion defaultActiveKey="1" flush>
                                 <Accordion.Item eventKey="0">
                                     <Accordion.Header>Mais Informações</Accordion.Header>
                                     <Accordion.Body>

@@ -1,36 +1,40 @@
 import React from 'react'
 import { Card, Button } from 'react-bootstrap'
 import { BsTrashFill, BsFillBrushFill, BsFillEyeFill } from 'react-icons/bs'
-import TuristicoService from '../../services/academico/Turistico';
+import TuristicoService from '../../services/ser/Turistico';
 import { Link } from 'react-router-dom'
 import "../css/Projeto.css"
 import swal from 'sweetalert';
 
-function CardTuristico(item) {
+const CardTuristico = (turistico) => {
 
     function apagar(id) {
-        if (swal({
+        swal({
             title: "Tem certeza?",
             text: "Uma vez excluído, você não será capaz de recuperar este arquivo!",
             icon: "warning",
             buttons: true,
             dangerMode: true,
+        }).then((podeApagar) => {
+            if (podeApagar) {
+                TuristicoService.delete(id)
+                swal("Bom trabalho!", "Você excluiu a cidade!", "success")
+                    .then(function () { window.location.reload() });
+            } else {
+                swal("Tudo bem!", "Você decidiu não excluir a cidade!", "info");
+            }
         })
-        ) {TuristicoService.delete(id) }
     }
 
     return (
-        <div>
-            <Card>
-                <Card.Img variant="top" src="holder.js/100px180" />
-                <Card.Body className='cor-card'>
-                    <Card.Title>{item.nome}</Card.Title>
-                    <Link to={'/turistico/:id'} className='btn btn-light botao'><BsFillEyeFill /></Link>
-                    <Link to={'/turistico/update/id:'} className='btn btn-light botao'><BsFillBrushFill /></Link>
-                    <Button className='btn btn-light' onClick={() => apagar(item.id)}><BsTrashFill /></Button>
-                </Card.Body>
-            </Card>
-        </div>
+        <Card>
+            <Card.Body className='cor-card'>
+                <Card.Title>{turistico.nome}</Card.Title>
+                <Link to={'/turistico/' + turistico.id} className='btn btn-light botao'><BsFillEyeFill /></Link>
+                <Link to={'/turistico/update/' + turistico.id} className='btn btn-light botao'><BsFillBrushFill /></Link>
+                <Button className='btn btn-light' onClick={() => apagar(turistico.id)}><BsTrashFill /></Button>
+            </Card.Body>
+        </Card>
     )
 }
 

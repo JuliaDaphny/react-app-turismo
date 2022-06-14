@@ -1,11 +1,11 @@
-import { Form, Button } from 'react-bootstrap';
 import React, { useEffect } from 'react'
+import { Button, Form } from 'react-bootstrap'
+import { useForm } from 'react-hook-form';
 import { BsCheckCircleFill } from 'react-icons/bs'
 import { BsArrowLeftCircleFill } from 'react-icons/bs'
-import { useForm } from 'react-hook-form';
+import ComercioService from '../../services/ser/Comercio';
 import { Link, useNavigate, useParams } from 'react-router-dom';
-import ComercioService from '../../services/academico/Comercio';
-import ComercioV from '../../components/validators/comercioV';
+import comercioV from '../../components/validators/comercioV';
 import { mask } from 'remask';
 
 const ComercioForm = () => {
@@ -48,32 +48,44 @@ const ComercioForm = () => {
       <Form className='p-lg-5'>
         <Form.Group className="mb-3" controlId="nome">
           <Form.Label>Nome: </Form.Label>
-          <Form.Control isInvalid={errors.nome} type="text" {...register("nome", ComercioV.nome)} className="shadow" />
+          <Form.Control isInvalid={errors.nome} type="text" {...register("nome", comercioV.nome)} className="shadow" />
           {errors.nome && <span>{errors.nome.message}</span>}
-        </Form.Group>
-
-        <Form.Group className="mb-3" controlId="descricao">
-          <Form.Label>Descrição: </Form.Label>
-          <Form.Control isInvalid={errors.descricao} type="text" {...register("descricao", ComercioV.descricao)} />
-          {errors.descricao && <span>{errors.descricao.message}</span>}
-        </Form.Group>
-
-        <Form.Group className="mb-3" controlId="localizacao">
-          <Form.Label>Localização: </Form.Label>
-          <Form.Control isInvalid={errors.localizacao} type="text" {...register("localizacao", ComercioV.localizacao)} />
-          {errors.localizacao && <span>{errors.localizacao.message}</span>}
-        </Form.Group>
-
-        <Form.Group className="mb-3" controlId="funcionamento">
-          <Form.Label>Horário de funcinamento: </Form.Label>
-          <Form.Control isInvalid={errors.funcionamento} type="text" {...register("funcionamento", ComercioV.funcionamento)} mask="99/99/9999" onChange={handleChange}/>
-          {errors.funcionamento && <span>{errors.funcionamento.message}</span>}
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="cidade">
           <Form.Label>Cidade: </Form.Label>
-          <Form.Control isInvalid={errors.cidade} type="text" {...register("cidade", ComercioV.cidade)} />
+          <Form.Control isInvalid={errors.cidade} type="text" {...register("cidade", comercioV.cidade)} />
           {errors.cidade && <span>{errors.cidade.message}</span>}
+        </Form.Group>
+
+        <Form.Group className="mb-3" controlId="pais">
+          <Form.Label>País: </Form.Label>
+          <Form.Control isInvalid={errors.pais} type="text" {...register("pais", comercioV.pais)} />
+          {errors.pais && <span>{errors.pais.message}</span>}
+        </Form.Group>
+
+        <Form.Group className="mb-3" controlId="funcionamento">
+          <Form.Label>Horário de funcinamento: </Form.Label>
+          <Form.Control isInvalid={errors.funcionamento} type="text" {...register("funcionamento", comercioV.funcionamento)} mask="99/99/9999" onChange={handleChange} />
+          {errors.funcionamento && <span>{errors.funcionamento.message}</span>}
+        </Form.Group>
+
+        <Form.Group className="mb-3" controlId="localizacao">
+          <Form.Label>Localização: </Form.Label>
+          <Form.Control isInvalid={errors.localizacao} type="text" {...register("localizacao", comercioV.localizacao)} />
+          {errors.localizacao && <span>{errors.localizacao.message}</span>}
+        </Form.Group>
+
+        <Form.Group className="mb-3" controlId="telefone">
+          <Form.Label>Telefone: </Form.Label>
+          <Form.Control isInvalid={errors.telefone} type="text" {...register("telefone", comercioV.telefone)} />
+          {errors.telefone && <span>{errors.telefone.message}</span>}
+        </Form.Group>
+
+        <Form.Group className="mb-3" controlId="informacao">
+          <Form.Label>Mais informações: </Form.Label>
+          <Form.Control isInvalid={errors.informacao} type="text" {...register("informacao", comercioV.informacao)} />
+          {errors.informacao && <span>{errors.informacao.message}</span>}
         </Form.Group>
 
         <div className="text-center">
@@ -81,6 +93,7 @@ const ComercioForm = () => {
           <Button onClick={handleSubmit(salvar)} className='btn btn-success botao'><BsCheckCircleFill /></Button>{' '}
         </div>
       </Form>
+
     </div>
   )
 }

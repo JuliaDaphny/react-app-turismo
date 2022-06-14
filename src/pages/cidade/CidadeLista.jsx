@@ -3,7 +3,7 @@ import { Col, Container, Row } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { FaPlus } from 'react-icons/fa'
 import CardCidade from '../../components/cardListas/CardCidade'
-import CidadeService from '../../services/academico/Cidade';
+import CidadeService from '../../services/ser/Cidade';
 
 function CidadeLista() {
     const [cidadeList, setCidade] = useState([])
@@ -22,7 +22,7 @@ function CidadeLista() {
                 </Row>
                 <Row>
                     {cidadeList.map((cidade, i) => (
-                        <Col md={4} className="py-3">
+                        <Col md={4} className="py-3" key={i}>
                             <CardCidade
                                 id={i}
                                 nome={cidade.nome}

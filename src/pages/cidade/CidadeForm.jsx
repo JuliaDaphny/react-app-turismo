@@ -3,7 +3,7 @@ import { Button, Form } from 'react-bootstrap'
 import { useForm } from 'react-hook-form';
 import { BsCheckCircleFill } from 'react-icons/bs'
 import { BsArrowLeftCircleFill } from 'react-icons/bs'
-import CidadeService from '../../services/academico/Cidade';
+import CidadeService from '../../services/ser/Cidade';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import cidadeV from '../../components/validators/cidadeV';
 
@@ -72,13 +72,13 @@ const CidadeForm = () => {
 
         <Form.Group className="mb-3" controlId="clima">
           <Form.Label>Clima: </Form.Label>
-          <Form.Control isInvalid={errors.clima} type="text" placeholder='O clima de Brasília é o tropical' />
+          <Form.Control isInvalid={errors.clima} type="text" placeholder='O clima de Brasília é o tropical' {...register("clima")} />
           {errors.clima && <span>{errors.clima.message}</span>}
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="curiosidade">
           <Form.Label>Curiosidades: </Form.Label>
-          <Form.Control isInvalid={errors.curiosidade} type="text" placeholder='Ex: vacas são veneradas e protegidas como animais sagrados' />
+          <Form.Control isInvalid={errors.curiosidade} type="text" placeholder='Ex: vacas são veneradas e protegidas como animais sagrados' {...register("curiosidade")} />
           {errors.curiosidade && <span>{errors.curiosidade.message}</span>}
         </Form.Group>
 

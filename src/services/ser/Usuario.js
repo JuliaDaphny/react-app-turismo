@@ -26,6 +26,23 @@ class RotaService {
         usuario.splice(id, 1)
         localStorage.setItem('usuario', JSON.stringify(usuario))
     }
+
+    getByLoginSenha(login, senha){
+        const userList = this.getAll()
+        return userList.filter(function(user){
+            return user.login === login && user.senha === senha
+        })[0]
+    }
+
+    setAutenticado(usuario){
+        localStorage.setItem('usuario_autenticado', usuario.id)
+    }
+
+    getAutenticado(){
+        const usuarioAutenticado = localStorage.getItem('usuario_autenticado')
+        const usuario = this.getAll()
+        return typeof usuario[usuarioAutenticado] != "undefined" ? usuario[usuarioAutenticado] : null
+    }
 }
 
 export default new RotaService()

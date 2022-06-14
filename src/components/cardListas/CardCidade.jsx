@@ -1,8 +1,7 @@
-import { Button } from 'react-bootstrap'
 import React from 'react'
-import { Card } from 'react-bootstrap'
+import { Card, Button } from 'react-bootstrap'
 import { BsTrashFill, BsFillBrushFill, BsFillEyeFill } from 'react-icons/bs'
-import CidadeService from '../../services/academico/Cidade';
+import CidadeService from '../../services/ser/Cidade';
 import { Link } from 'react-router-dom'
 import "../css/Projeto.css"
 import swal from 'sweetalert';
@@ -29,7 +28,6 @@ const CardCidade = (cidade) => {
 
     return (
         <Card>
-            <Card.Img variant="top" src="holder.js/100px180" />
             <Card.Body className='cor-card'>
                 <Card.Title>{cidade.nome}</Card.Title>
                 <Link to={'/cidade/' + cidade.id} className='btn btn-light botao'><BsFillEyeFill /></Link>

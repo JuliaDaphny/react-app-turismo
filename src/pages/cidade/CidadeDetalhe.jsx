@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import CidadeService from '../../services/academico/Cidade';
+import CidadeService from '../../services/ser/Cidade';
 import DetalheCidade from '../../components/cardsDetalhes/DetalheCidade';
 import { useParams } from 'react-router-dom';
 
@@ -17,16 +17,16 @@ const CidadeDetalhe = () => {
 
   return (
     <div>
-        <DetalheCidade
-          id={params.id}
-          nome={cidade.nome}
-          descricao={cidade.descricao}
-          curiosidade={cidade.curiosidade}
-          lingua={cidade.lingua}
-          localizacao={cidade.localizacao}
-          clima={cidade.clima}
-          territorio={cidade.territorio}
-        />
+      <DetalheCidade
+        id={params.id}
+        nome={cidade.nome}
+        descricao={cidade.descricao}
+        curiosidade={cidade.curiosidade}
+        lingua={cidade.lingua}
+        localizacao={cidade.localizacao}
+        clima={cidade.clima}
+        territorio={cidade.territorio}
+      />
     </div>
   )
 }

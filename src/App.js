@@ -18,6 +18,7 @@ import TuristicoForm from "./pages/turistico/TuristicoForm";
 import UsuarioDetalhe from "./pages/usuario/UsuarioDetalhe";
 import TuristicoDetalhe from "./pages/turistico/TuristicoDetalhe";
 import ComercioLista from "./pages/comercio/ComercioLista";
+import UsuarioLogin from "./pages/usuario/UsuarioLogin";
 
 
 function App() {
@@ -53,6 +54,7 @@ function App() {
             <Route path="/usuario" element={<UsuarioLista />} />
             <Route path="/usuario/create" element={<UsuarioForm />} />
             <Route path="/usuario/update/:id" element={<UsuarioForm />} />
+            <Route path="/usuario/login" element={<UsuarioLogin />} />
 
             {/* Rotas das páginas pontos turisticos */}
             <Route path="/turistico/:id" element={<TuristicoDetalhe />} />

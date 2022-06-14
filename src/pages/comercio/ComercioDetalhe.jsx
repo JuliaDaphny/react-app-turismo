@@ -1,31 +1,32 @@
 import React, { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom';
-import { FaPlus } from 'react-icons/fa'
-import ComercioService from '../../services/academico/Comercio';
+import ComercioService from '../../services/ser/Comercio';
 import DetalheComercio from '../../components/cardsDetalhes/DetalheComercio';
+import { useParams } from 'react-router-dom';
 
 const ComercioDetalhe = () => {
-  const [comercio, setCidade] = useState([])
+  const [comercio, setComercio] = useState([])
+  const params = useParams()
 
   useEffect(() => {
-    setCidade(ComercioService.getAll())
-  }, [])
+    setComercio(ComercioService.getAll()[params.id])
+  }, [params])
+
+  if (typeof comercio == 'undefined') {
+    return (<div></div>)
+  }
 
   return (
     <div>
-      <h1>Lista do comércio das cidades</h1>
-
-      <Link className='btn btn-info mb-3' to={'/comercio/create'}><FaPlus /> Novo</Link>
-      {comercio.map((item, i) => (
-        <DetalheComercio
-          id={i}
-          nome={item.nome}
-          descricao={item.descricao}
-          cidade={item.cidade}
-          localizacao={item.localizacao}
-          funcionamento={item.funcionamento}
-        />
-      ))}
+      <DetalheComercio
+        id={params.id}
+        nome={comercio.nome}
+        cidade={comercio.cidade}
+        pais={comercio.pais}
+        funcionamento={comercio.funcionamento}
+        localizacao={comercio.localizacao}
+        telefone={comercio.telefone}
+        informacao={comercio.informacao}
+      />
     </div>
   )
 }

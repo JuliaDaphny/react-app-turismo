@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react'
-import { Col, Row } from 'react-bootstrap';
+import { Col, Container, Row } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { FaPlus } from 'react-icons/fa'
-import TuristicoService from '../../services/academico/Turistico';
+import TuristicoService from '../../services/ser/Turistico';
 import CardTuristico from '../../components/cardListas/CardTuristico';
 
 function TuristicoLista() {
-  const [turistico, setTuristico] = useState([])
+  const [turisticoList, setTuristico] = useState([])
 
   useEffect(() => {
     setTuristico(TuristicoService.getAll())
@@ -14,20 +14,24 @@ function TuristicoLista() {
 
   return (
     <div className='fundo'>
-
-      <Link className='btn mb-5 btn-warning' to={'/turistico/create'}><FaPlus /> Novo</Link>
-
-      <Row>
-        {turistico.map((item, i) => (
-          <Col className='py-3' key={i}>
-            <CardTuristico
-              id={i}
-              nome={item.nome}
-              img={item.img}
-            />
+      <Container>
+        <Row>
+          <Col className='py-4'>
+            <Link className='btn btn-warning ' to={'/turistico/create'}><FaPlus /> Novo</Link>
           </Col>
-        ))}
-      </Row>
+        </Row>
+        <Row>
+          {turisticoList.map((turistico, i) => (
+            <Col className="py-3" key={i}>
+              <CardTuristico
+                id={i}
+                nome={turistico.nome}
+                img={turistico.img}
+              />
+            </Col>
+          ))}
+        </Row>
+      </Container>
     </div>
   )
 }

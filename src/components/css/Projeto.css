@@ -40,3 +40,14 @@
     font-family: sans-serif;
     margin-bottom: 0px;
 }
+
+.no-after>.dropdown-toggle::after {
+    content: none;
+}
+
+.objeto-menu{
+    color: rgb(255 255 255);
+    font-size: 25px;
+}
+  
+  

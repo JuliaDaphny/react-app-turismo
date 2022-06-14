@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import DetalheUsuario from '../../components/cardsDetalhes/DetalheUsuario';
-import UsuarioService from '../../services/academico/Usuario';
+import UsuarioService from '../../services/ser/Usuario';
 
 const UsuarioDetalhe = () => {
     const [usuario, setUsuario] = useState([])
