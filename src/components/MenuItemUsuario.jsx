@@ -11,12 +11,12 @@ const MenuItemUsuario = () => {
 
   if (usuario == null) {
     return (<Link className="nav-link" to={"/usuario/login"}>
-      Login
+      {/* Login */}
     </Link>)
   } else {
     return (
       <Link className="nav-link" to={"/usuario/" + usuario.id}>
-        {usuario.nome}
+        {/* {usuario.nome} */}
       </Link>
     )
   }

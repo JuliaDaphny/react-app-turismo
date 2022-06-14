@@ -6,6 +6,7 @@ import { BsArrowLeftCircleFill } from 'react-icons/bs'
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import TuristicoService from '../../services/Turistico';
 import turisticoV from '../../components/validators/turisticoV';
+import { mask } from 'remask';
 
 const TuristicoForm = () => {
 
@@ -34,6 +35,11 @@ const TuristicoForm = () => {
     navigate('/turistico')
   }
 
+  function handleChange(event) {
+    const mascara = event.target.getAttribute('mask')
+    setValue(event.target.name, mask(event.target.value, mascara))
+  }
+
   return (
     <div>
       <h1 className='titulo-cidade'>Cadastre um novo ponto turistico</h1>
@@ -54,7 +60,7 @@ const TuristicoForm = () => {
 
         <Form.Group className="mb-3" controlId="funcionamento">
           <Form.Label>Horário de funcinamento: </Form.Label>
-          <Form.Control isInvalid={errors.funcionamento} type="text" {...register("funcionamento", turisticoV.funcionamento)} />
+          <Form.Control isInvalid={errors.funcionamento} type="text" {...register("funcionamento", turisticoV.funcionamento)} mask="99:99" onChange={handleChange}/>
           {errors.funcionamento && <span>{errors.funcionamento.message}</span>}
         </Form.Group>
 

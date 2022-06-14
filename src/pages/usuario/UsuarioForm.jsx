@@ -6,6 +6,7 @@ import { BsArrowLeftCircleFill } from 'react-icons/bs'
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import UsuarioService from '../../services/Usuario';
 import usuarioV from '../../components/validators/usuarioV';
+import { mask } from 'remask';
 
 const UsuarioForm = () => {
 
@@ -34,6 +35,11 @@ const UsuarioForm = () => {
     navigate('/usuario')
   }
 
+  function handleChange(event) {
+    const mascara = event.target.getAttribute('mask')
+    setValue(event.target.name, mask(event.target.value, mascara))
+  }
+
   return (
 
     <div>
@@ -48,14 +54,23 @@ const UsuarioForm = () => {
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="funcao">
-          <Form.Label>Função: </Form.Label>
-          <Form.Control isInvalid={errors.funcao} type="text" {...register("funcao", usuarioV.funcao)} />
+          <Form.Label>Função: </Form.Label><br />
+          <Form.Label className='btn btn-danger form-label me-sm-3'>
+            <span className='mx-2'>Administrador</span>
+            <input isInvalid={errors.funcao} type="radio" value={"administrador"}{...register("funcao", usuarioV.funcao)} />
+          </Form.Label>
+
+          <Form.Label className='btn btn-danger form-label me-sm-3'>
+            <span className='mx-2'>Operador</span>
+            <input isInvalid={errors.funcao} type="radio" value={"operador"}{...register("funcao", usuarioV.funcao)} />
+          </Form.Label>
+
           {errors.funcao && <span>{errors.funcao.message}</span>}
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="dataDeCadastro">
           <Form.Label>Data de cadastro: </Form.Label>
-          <Form.Control isInvalid={errors.dataDeCadastro} type="text" {...register("dataDeCadastro", usuarioV.dataDeCadastro)} />
+          <Form.Control isInvalid={errors.dataDeCadastro} type="text" {...register("dataDeCadastro", usuarioV.dataDeCadastro)} mask="99/99/9999" onChange={handleChange} />
           {errors.dataDeCadastro && <span>{errors.dataDeCadastro.message}</span>}
         </Form.Group>
 
@@ -64,7 +79,19 @@ const UsuarioForm = () => {
           <Form.Control isInvalid={errors.email} type="text" {...register("email", usuarioV.email)} />
           {errors.email && <span>{errors.email.message}</span>}
         </Form.Group>
-        
+
+        <Form.Group className="mb-3" controlId="senha">
+          <Form.Label>Senha: </Form.Label>
+          <Form.Control isInvalid={errors.senha} type="password" {...register("senha", usuarioV.senha)} />
+          {errors.senha && <span>{errors.senha.message}</span>}
+        </Form.Group>
+
+        <Form.Group className="mb-3" controlId="telefone">
+          <Form.Label>Telefone: </Form.Label>
+          <Form.Control isInvalid={errors.telefone} type="text" {...register("telefone", usuarioV.telefone)} mask="(99) 9 9999-9999" onChange={handleChange} />
+          {errors.telefone && <span>{errors.telefone.message}</span>}
+        </Form.Group>
+
         <div className="text-center">
           <Link className='btn btn-danger botao' to={-1}><BsArrowLeftCircleFill /></Link>
           <Button onClick={handleSubmit(salvar)} className='btn btn-success botao'><BsCheckCircleFill /></Button>{' '}

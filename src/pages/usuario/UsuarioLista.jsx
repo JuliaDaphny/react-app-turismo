@@ -22,14 +22,16 @@ function UsuarioLista() {
           </Col>
         </Row>
         <Row>
-          {usuarioList.map((turistico, i) => (
+          {usuarioList.map((usuario, i) => (
             <Col className="py-3" key={i}>
               <CardUsuario
                 id={i}
-                nome={turistico.nome}
-                funcao={turistico.funcao}
-                dataDeCadastro={turistico.dataDeCadastro} //mask
-                email={turistico.email} //mask
+                nome={usuario.nome}
+                funcao={usuario.funcao}
+                dataDeCadastro={usuario.dataDeCadastro} //mask
+                email={usuario.email}
+                senha={usuario.senha}
+                telefone={usuario.telefone} //mask
               />
             </Col>
           ))}

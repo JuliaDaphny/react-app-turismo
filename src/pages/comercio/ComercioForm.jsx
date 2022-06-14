@@ -66,7 +66,7 @@ const ComercioForm = () => {
 
         <Form.Group className="mb-3" controlId="funcionamento">
           <Form.Label>Horário de funcinamento: </Form.Label>
-          <Form.Control isInvalid={errors.funcionamento} type="text" {...register("funcionamento", comercioV.funcionamento)} mask="99/99/9999" onChange={handleChange} />
+          <Form.Control isInvalid={errors.funcionamento} type="text" {...register("funcionamento", comercioV.funcionamento)} mask="99:99" onChange={handleChange} />
           {errors.funcionamento && <span>{errors.funcionamento.message}</span>}
         </Form.Group>
 
@@ -78,7 +78,7 @@ const ComercioForm = () => {
 
         <Form.Group className="mb-3" controlId="telefone">
           <Form.Label>Telefone: </Form.Label>
-          <Form.Control isInvalid={errors.telefone} type="text" {...register("telefone", comercioV.telefone)} />
+          <Form.Control isInvalid={errors.telefone} type="text" {...register("telefone", comercioV.telefone)} mask="(99) 9999-9999" onChange={handleChange}/>
           {errors.telefone && <span>{errors.telefone.message}</span>}
         </Form.Group>
 

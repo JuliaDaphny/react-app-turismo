@@ -22,13 +22,9 @@ const UsuarioLogin = () => {
     }
   }, [params.id, setValue])
 
-  function salvar(dados) {
-
-    if (params.id) {
-      UsuarioService.update(params.id, dados)
-    } else {
-      UsuarioService.create(dados)
-    }
+  function Logar(dados) {
+    const usuario = UsuarioService.getByLoginSenha(dados.login, dados.senha)
+    UsuarioService.setAutenticado(usuario)
 
     navigate('/usuario')
   }
@@ -39,10 +35,10 @@ const UsuarioLogin = () => {
       <div className="linha-2 mb-2"></div>
 
       <Form className='p-lg-5'>
-        <Form.Group className="mb-3" controlId="login">
+        <Form.Group className="mb-3" controlId="email">
           <Form.Label>Login: </Form.Label>
-          <Form.Control isInvalid={errors.login} type="text" {...register("login", usuarioV.login)} />
-          {errors.login && <span>{errors.login.message}</span>}
+          <Form.Control isInvalid={errors.email} type="text" {...register("email", usuarioV.email)} />
+          {errors.email && <span>{errors.email.message}</span>}
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="senha">
@@ -53,7 +49,7 @@ const UsuarioLogin = () => {
 
         <div className="text-center">
           <Link className='btn btn-danger botao' to={-1}><BsArrowLeftCircleFill /></Link>
-          <Button onClick={handleSubmit(salvar)} className='btn btn-success botao'>Entrar</Button>{' '}
+          <Button onClick={handleSubmit(Logar)} className='btn btn-success botao'>Entrar</Button>{' '}
         </div>
       </Form>
     </div>

@@ -6,6 +6,7 @@ import { BsArrowLeftCircleFill } from 'react-icons/bs'
 import EntretenimentoService from '../../services/Entretenimento';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import entretenimentoV from '../../components/validators/entretenimentoV';
+import { mask } from 'remask';
 
 const EntretenimentoForm = () => {
 
@@ -34,6 +35,11 @@ const EntretenimentoForm = () => {
     navigate('/entretenimento')
   }
 
+  function handleChange(event) {
+    const mascara = event.target.getAttribute('mask')
+    setValue(event.target.name, mask(event.target.value, mascara))
+  }
+
   return (
     <div>
       <h1 className='titulo-cidade'>Cadastre uma novo entretenimento</h1>
@@ -60,13 +66,13 @@ const EntretenimentoForm = () => {
 
         <Form.Group className="mb-3" controlId="data">
           <Form.Label>Data do evento: </Form.Label>
-          <Form.Control isInvalid={errors.data} type="text" {...register("data", entretenimentoV.data)} />
+          <Form.Control isInvalid={errors.data} type="text" {...register("data", entretenimentoV.data)} mask="99/99/9999" onChange={handleChange} />
           {errors.data && <span>{errors.data.message}</span>}
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="preco">
           <Form.Label>Valor do evento: </Form.Label>
-          <Form.Control isInvalid={errors.preco} type="text" {...register("preco", entretenimentoV.preco)} />
+          <Form.Control isInvalid={errors.preco} type="text" {...register("preco", entretenimentoV.preco)} mask="99,99" onChange={handleChange} />
           {errors.preco && <span>{errors.preco.message}</span>}
         </Form.Group>
 
