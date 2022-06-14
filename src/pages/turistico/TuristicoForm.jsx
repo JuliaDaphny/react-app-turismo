@@ -4,7 +4,7 @@ import { useForm } from 'react-hook-form';
 import { BsCheckCircleFill } from 'react-icons/bs'
 import { BsArrowLeftCircleFill } from 'react-icons/bs'
 import { Link, useNavigate, useParams } from 'react-router-dom';
-import TuristicoService from '../../services/ser/Turistico';
+import TuristicoService from '../../services/Turistico';
 import turisticoV from '../../components/validators/turisticoV';
 
 const TuristicoForm = () => {

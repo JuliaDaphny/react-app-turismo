@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { Col, Container, Row } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { FaPlus } from 'react-icons/fa'
-import EntretenimentoService from '../../services/ser/Entretenimento';
+import EntretenimentoService from '../../services/Entretenimento';
 import CardEntretenimento from '../../components/cardListas/CardEntretenimento';
 
 function EntretenimentoLista() {

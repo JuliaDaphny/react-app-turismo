@@ -1,7 +1,7 @@
 import React from 'react'
 import { Card, Button } from 'react-bootstrap'
 import { BsTrashFill, BsFillBrushFill, BsFillEyeFill } from 'react-icons/bs'
-import CidadeService from '../../services/ser/Cidade';
+import CidadeService from '../../services/Cidade';
 import { Link } from 'react-router-dom'
 import "../css/Projeto.css"
 import swal from 'sweetalert';

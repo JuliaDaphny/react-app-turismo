@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom';
-import TuristicoService from '../../services/ser/Turistico';
+import TuristicoService from '../../services/Turistico';
 import DetalheTuristico from '../../components/cardsDetalhes/DetalheTuristico';
 
 const TuristicoDetalhe = () => {

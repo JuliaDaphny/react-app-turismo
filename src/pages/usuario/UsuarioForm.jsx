@@ -4,7 +4,7 @@ import { useForm } from 'react-hook-form';
 import { BsCheckCircleFill } from 'react-icons/bs'
 import { BsArrowLeftCircleFill } from 'react-icons/bs'
 import { Link, useNavigate, useParams } from 'react-router-dom';
-import UsuarioService from '../../services/ser/Usuario';
+import UsuarioService from '../../services/Usuario';
 import usuarioV from '../../components/validators/usuarioV';
 
 const UsuarioForm = () => {

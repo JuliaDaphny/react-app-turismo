@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { Col, Container, Row } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { FaPlus } from 'react-icons/fa'
-import UsuarioService from '../../services/ser/Usuario';
+import UsuarioService from '../../services/Usuario';
 import CardUsuario from '../../components/cardListas/CardUsuario';
 
 function UsuarioLista() {

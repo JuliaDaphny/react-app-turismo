@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { Form, Button } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
-import UsuarioService from '../../services/ser/Usuario';
+import UsuarioService from '../../services/Usuario';
 import { BsArrowLeftCircleFill } from 'react-icons/bs'
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import usuarioV from '../../components/validators/usuarioV'; 

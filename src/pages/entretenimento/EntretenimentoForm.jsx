@@ -3,7 +3,7 @@ import { Form, Button } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
 import { BsCheckCircleFill } from 'react-icons/bs'
 import { BsArrowLeftCircleFill } from 'react-icons/bs'
-import EntretenimentoService from '../../services/ser/Entretenimento';
+import EntretenimentoService from '../../services/Entretenimento';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import entretenimentoV from '../../components/validators/entretenimentoV';
 

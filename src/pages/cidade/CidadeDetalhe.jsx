@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import CidadeService from '../../services/ser/Cidade';
+import CidadeService from '../../services/Cidade';
 import DetalheCidade from '../../components/cardsDetalhes/DetalheCidade';
 import { useParams } from 'react-router-dom';
 

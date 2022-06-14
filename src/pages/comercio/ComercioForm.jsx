@@ -3,7 +3,7 @@ import { Button, Form } from 'react-bootstrap'
 import { useForm } from 'react-hook-form';
 import { BsCheckCircleFill } from 'react-icons/bs'
 import { BsArrowLeftCircleFill } from 'react-icons/bs'
-import ComercioService from '../../services/ser/Comercio';
+import ComercioService from '../../services/Comercio';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import comercioV from '../../components/validators/comercioV';
 import { mask } from 'remask';

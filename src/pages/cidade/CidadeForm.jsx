@@ -3,7 +3,7 @@ import { Button, Form } from 'react-bootstrap'
 import { useForm } from 'react-hook-form';
 import { BsCheckCircleFill } from 'react-icons/bs'
 import { BsArrowLeftCircleFill } from 'react-icons/bs'
-import CidadeService from '../../services/ser/Cidade';
+import CidadeService from '../../services/Cidade';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import cidadeV from '../../components/validators/cidadeV';
 

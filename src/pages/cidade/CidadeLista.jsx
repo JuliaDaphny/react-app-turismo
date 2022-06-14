@@ -3,7 +3,7 @@ import { Col, Container, Row } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { FaPlus } from 'react-icons/fa'
 import CardCidade from '../../components/cardListas/CardCidade'
-import CidadeService from '../../services/ser/Cidade';
+import CidadeService from '../../services/Cidade';
 
 function CidadeLista() {
     const [cidadeList, setCidade] = useState([])

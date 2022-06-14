@@ -1,6 +1,6 @@
 import React , { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
-import UsuarioService from '../services/ser/Usuario';
+import UsuarioService from '../services/Usuario';
 
 const MenuItemUsuario = () => {
   const [usuario, setUsuario] = useState([])

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { Col, Container, Row } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { FaPlus } from 'react-icons/fa'
-import TuristicoService from '../../services/ser/Turistico';
+import TuristicoService from '../../services/Turistico';
 import CardTuristico from '../../components/cardListas/CardTuristico';
 
 function TuristicoLista() {
