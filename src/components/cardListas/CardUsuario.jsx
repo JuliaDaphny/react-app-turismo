@@ -1,6 +1,6 @@
 import React from 'react'
 import { Card, Button } from 'react-bootstrap'
-import { BsTrashFill, BsFillBrushFill, BsFillEyeFill } from 'react-icons/bs'
+import { BsTrashFill, BsFillBrushFill } from 'react-icons/bs'
 import UsuarioService from '../../services/Usuario';
 import { Link } from 'react-router-dom'
 import "../css/Projeto.css"
@@ -35,7 +35,6 @@ const CardUsuario = (usuario) => {
                 <Card.Title>{usuario.telefone}</Card.Title>
                 <Card.Title>{usuario.email}</Card.Title><br/>
                 
-                <Link to={'/usuario/' + usuario.id} className='btn btn-light botao'><BsFillEyeFill /></Link>
                 <Link to={'/usuario/update/' + usuario.id} className='btn btn-light botao'><BsFillBrushFill /></Link>
                 <Button className='btn btn-light' onClick={() => apagar(usuario.id)}><BsTrashFill /></Button>
             </Card.Body>

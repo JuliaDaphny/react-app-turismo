@@ -1,7 +1,7 @@
 import React from 'react'
 import { Container, Nav, Navbar, NavDropdown } from 'react-bootstrap'
 import { BsFillMenuButtonFill } from 'react-icons/bs'
-import MenuItemUsuario from './MenuItemUsuario';
+// import MenuItemUsuario from './MenuItemUsuario';
 
 const Menu = () => {
 
@@ -26,8 +26,9 @@ const Menu = () => {
             </NavDropdown>
           </Nav>
 
-          <Nav className="justify-content-end">
-            <MenuItemUsuario></MenuItemUsuario>
+          <Nav className="justify-content-end ">
+            <Nav.Link href="/cidade">Login</Nav.Link>
+            {/* <MenuItemUsuario></MenuItemUsuario> */}
           </Nav>
 
         </Container>
