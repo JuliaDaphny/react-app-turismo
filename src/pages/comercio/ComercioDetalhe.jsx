@@ -22,9 +22,9 @@ const ComercioDetalhe = () => {
         nome={comercio.nome}
         cidade={comercio.cidade}
         pais={comercio.pais}
-        funcionamento={comercio.funcionamento}
+        funcionamento={comercio.funcionamento} //masck
         localizacao={comercio.localizacao}
-        telefone={comercio.telefone}
+        telefone={comercio.telefone} //masck
         informacao={comercio.informacao}
       />
     </div>

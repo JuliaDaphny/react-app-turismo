@@ -22,10 +22,10 @@ const EntretenimentoDetalhe = () => {
                 id={params.id}
                 nome={entretenimento.nome}
                 cidade={entretenimento.cidade}
-                data={entretenimento.data}
+                data={entretenimento.data} //mask
                 localizacao={entretenimento.localizacao}
                 descricao={entretenimento.descricao}
-                preco={entretenimento.preco}
+                preco={entretenimento.preco} // mask
                 informacao={entretenimento.informacao}
             />
         </div>

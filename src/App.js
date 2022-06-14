@@ -15,7 +15,6 @@ import ComercioDetalhe from "./pages/comercio/ComercioDetalhe";
 import ComercioForm from "./pages/comercio/ComercioForm";
 import UsuarioForm from "./pages/usuario/UsuarioForm";
 import TuristicoForm from "./pages/turistico/TuristicoForm";
-import UsuarioDetalhe from "./pages/usuario/UsuarioDetalhe";
 import TuristicoDetalhe from "./pages/turistico/TuristicoDetalhe";
 import ComercioLista from "./pages/comercio/ComercioLista";
 import UsuarioLogin from "./pages/usuario/UsuarioLogin";
@@ -50,7 +49,6 @@ function App() {
             <Route path="/comercio/update/:id" element={<ComercioForm />} />
 
             {/* Rotas das páginas de usuarios-adm */}
-            <Route path="/usuario/:id" element={<UsuarioDetalhe />} />
             <Route path="/usuario" element={<UsuarioLista />} />
             <Route path="/usuario/create" element={<UsuarioForm />} />
             <Route path="/usuario/update/:id" element={<UsuarioForm />} />

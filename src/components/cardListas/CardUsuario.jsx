@@ -31,6 +31,9 @@ const CardUsuario = (usuario) => {
             <Card.Body className='cor-card'>
                 <Card.Title>{usuario.nome}</Card.Title>
                 <Card.Title>{usuario.funcao}</Card.Title>
+                <Card.Title>{usuario.dataDeCadastro}</Card.Title>
+                <Card.Title>{usuario.email}</Card.Title><br/>
+                
                 <Link to={'/usuario/' + usuario.id} className='btn btn-light botao'><BsFillEyeFill /></Link>
                 <Link to={'/usuario/update/' + usuario.id} className='btn btn-light botao'><BsFillBrushFill /></Link>
                 <Button className='btn btn-light' onClick={() => apagar(usuario.id)}><BsTrashFill /></Button>
